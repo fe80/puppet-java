@@ -87,6 +87,7 @@ describe 'java' do
         let(:params) {{
           provider: 'oracle',
           versions: [ 8 ],
+          mirror: 'https://mymirror.com/oracle/apt'
         }}
 
         if facts[:osfamily] == 'RedHat'

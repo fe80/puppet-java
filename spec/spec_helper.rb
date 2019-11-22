@@ -27,7 +27,6 @@ end
 
 RSpec.configure do |c|
   c.default_facts = default_facts
-  c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
   c.before :each do
     # set to strictest setting for testing
     # by default Puppet runs at warning level
@@ -35,7 +34,6 @@ RSpec.configure do |c|
   end
   c.filter_run_excluding(bolt: true) unless ENV['GEM_BOLT']
   c.after(:suite) do
-    RSpec::Puppet::Coverage.report!(0)
   end
 end
 
@@ -47,11 +45,3 @@ def ensure_module_defined(module_name)
 end
 
 # 'spec_overrides' from sync.yml will appear below this line
-module_spec_dir = File.dirname(File.expand_path(__FILE__))
-custom_facts = File.join(module_spec_dir, 'fixtures', 'facts')
-ENV['FACTERDB_SEARCH_PATHS'] = custom_facts
-RSpec.configure do |c|
-   c.after(:suite) do
-     RSpec::Puppet::Coverage.report!
-   end
-end

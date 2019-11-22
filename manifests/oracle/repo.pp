@@ -13,7 +13,7 @@ class java::oracle::repo (
 ) {
   case fact('osfamily') {
     /Debian/: {
-      require s_apt
+      require apt
       apt::source { 'java-oracle':
         ensure   => $ensure,
         location => $mirror,
