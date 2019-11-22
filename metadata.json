@@ -1,10 +1,12 @@
 {
-  "name": "fe80-java",
+  "name": "puppet-java",
   "version": "0.1.0",
   "author": "fe80",
-  "summary": "",
+  "summary": "Puppet Java jdk management module",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/fe80/puppet-java.git",
+  "project_page": "https://github.com/fe80/puppet-java",
+  "issues_url": "https://github.com/fe80/puppet-java/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
