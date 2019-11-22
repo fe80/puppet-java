@@ -4,6 +4,9 @@
 # @api private
 #
 class java::profile {
+
+  assert_private()
+
   $homes = '/usr/lib/jvm'
 
   file { $java::profile:

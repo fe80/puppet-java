@@ -5,6 +5,8 @@
 #
 class java::openjdk {
 
+  assert_private()
+
   require java
 
   include java::openjdk::install
