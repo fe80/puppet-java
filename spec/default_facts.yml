@@ -1,0 +1,28 @@
+# Use default_module_facts.yml for module specific facts.
+#
+# Facts specified here will override the values provided by rspec-puppet-facts.
+---
+ipaddress: "172.16.254.254"
+is_pe: false
+macaddress: "AA:AA:AA:AA:AA:AA"
+ipaddress_private: 172.16.254.254
+location: sd
+hosting_code: mah
+affiliate: claranet
+soe_version: soe2013
+systemd_available: true
+rhn_reg: false
+status: production
+tina_majversion: '4.3'
+sam_type: standalone
+redhat_release: ''
+client_code: claranet
+project_code: acme
+platform: production
+role: dominator
+subrole: cuir
+is_ntpmaster: false
+filebeat_version: '5'
+client_name: rspec
+project_name: puppet
+collectdmajversion: '5.5'
