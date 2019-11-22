@@ -1,0 +1,23 @@
+# Managed by puppet
+if [[ $1 == '-v' ]] && [[ -n $2 ]]; then
+  VERSION=$2
+else
+  VERSION=<%= scope['s_java::_default_version'] %>
+fi
+
+<%- if scope['s_java::provider'] == 'openjdk' -%>
+<%-   if @osfamily == 'Debian' -%>
+export JAVA_HOME="<%= @homes -%>/java-${VERSION}-openjdk-amd64"
+<%-   else -%>
+if [[ ${VERSION} -le 8 ]]; then
+  DIR="jre-1.${VERSION}.0"
+else
+  DIR="jre-${VERSION}-openjdk"
+fi
+export JAVA_HOME="<%= @homes -%>/${DIR}"
+<%-   end -%>
+<%- else -%>
+export JAVA_HOME="/opt/oracle-java${VERSION}/jdk"
+<%- end -%>
+
+export PATH=$JAVA_HOME/bin:$PATH
