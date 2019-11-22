@@ -1,5 +1,5 @@
 {
-  "name": "puppet-java",
+  "name": "fe80-java",
   "version": "0.1.0",
   "author": "fe80",
   "summary": "Puppet Java jdk management module",
