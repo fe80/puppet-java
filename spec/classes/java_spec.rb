@@ -62,7 +62,7 @@ describe 'java' do
 
           # Define
           it do
-            is_expected.to contain_java__openjdk__install__debian("openjdk-#{version}")
+            is_expected.to contain_java__openjdk__install__debian('openjdk-%s' % version)
           end
 
           # Package
@@ -72,7 +72,7 @@ describe 'java' do
           ['java', 'jar', 'javac', 'jarsigner', 'javap', 'javadoc'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                '/usr/lib/jvm/java-%s-openjdk-amd64/bin/%s' % [bin, version]
+                '/usr/lib/jvm/java-%s-openjdk-amd64/bin/%s' % [version, bin]
               )
               is_expected.to contain_alternatives(bin)
             end
