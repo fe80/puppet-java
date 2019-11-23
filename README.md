@@ -1,8 +1,8 @@
 ---
 
-[![Build Status](https://api.travis-ci.com/fe80/puppet-java.svg?branch=master)](https://travis-ci.org/fe80/puppet-java)
+[![Build Status](https://api.travis-ci.com/fe80/puppet-java.svg?branch=master)](https://travis-ci.com/fe80/puppet-java)
 [![Coverage Status](https://coveralls.io/repos/github/fe80/java-package/badge.svg?branch=master)](https://coveralls.io/github/fe80/java-package?branch=master)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/fe80/java.svg)](https://forge.puppetlabs.com/feuo/java)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/fe80/java.svg)](https://forge.puppetlabs.com/fe80/java)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/fe80/java.svg)](https://forge.puppetlabs.com/fe80/java)
 
 # Java module for Puppet
