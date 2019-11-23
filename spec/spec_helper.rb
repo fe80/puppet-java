@@ -1,7 +1,7 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-facts'
 
-if Dir.exist?(File.expand_path('../../lib', __FILE__))
+if Dir.exist?(File.expand_path('../lib', __FILE__))
   require 'coveralls'
   require 'simplecov'
   require 'simplecov-console'
