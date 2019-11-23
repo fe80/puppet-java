@@ -44,7 +44,7 @@ describe 'java' do
           ['java', 'jar', 'javac'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                '/usr/lib/jvm/jre-11-openjdk/bin/' + bin
+                '/usr/lib/jvm/jre-11-openjdk/bin/%s' % [bin]
               )
             end
             it { is_expected.to contain_alternatives(bin) }
@@ -52,15 +52,13 @@ describe 'java' do
         else
 
           # Package
-          if facts[:operatingsystem] == 'Debian'
-            version = 7
-          else
-            if facts[:operatingsystemmajrelease].to_f >= 18.04
-              version = 11
-            else
-              version = 8
-            end
-          end
+          version = if facts[:operatingsystem] == 'Debian'
+                      7
+                    elsif facts[:operatingsystemmajrelease].to_f >= 18.04
+                      version = 11
+                    else
+                      version = 8
+                    end
 
           # Define
           it do
@@ -68,13 +66,13 @@ describe 'java' do
           end
 
           # Package
-          it { is_expected.to contain_package("openjdk-#{version}-jdk") }
+          it { is_expected.to contain_package('openjdk-%s-jdk' % [version]) }
 
           # Alternatives
           ['java', 'jar', 'javac', 'jarsigner', 'javap', 'javadoc'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                "/usr/lib/jvm/java-#{version}-openjdk-amd64/bin/" + bin
+                '/usr/lib/jvm/java-%s-openjdk-amd64/bin/%s' % [bin, version]
               )
               is_expected.to contain_alternatives(bin)
             end
@@ -111,7 +109,7 @@ describe 'java' do
           ['java', 'jar', 'javac'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                '/opt/oracle-java8/jdk/bin/' + bin
+                '/opt/oracle-java8/jdk/bin/%s' % [bin]
               )
             end
             it { is_expected.to contain_alternatives(bin) }
