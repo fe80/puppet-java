@@ -27,7 +27,7 @@ class {'java':
 
 ### Oracle jdk support
 
-For supported oracle Jdk you need to define a repository
+For supported oracle Jdk you need to define a repository.
 
 ```puppet
 class {
@@ -37,7 +37,9 @@ class {
 }
 ```
 
-Need contribution for RedHat support
+For build java, I recommend ruby fpm package.
+
+Need contribution for RedHat support.
 
 ## Supported OS
 
