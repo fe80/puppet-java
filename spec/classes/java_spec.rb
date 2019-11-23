@@ -44,7 +44,7 @@ describe 'java' do
           ['java', 'jar', 'javac'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                '/usr/lib/jvm/jre-11-openjdk/bin/%s' % [bin]
+                '/usr/lib/jvm/jre-11-openjdk/bin/%s' % [bin],
               )
             end
             it { is_expected.to contain_alternatives(bin) }
@@ -72,7 +72,7 @@ describe 'java' do
           ['java', 'jar', 'javac', 'jarsigner', 'javap', 'javadoc'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                '/usr/lib/jvm/java-%s-openjdk-amd64/bin/%s' % [version, bin]
+                '/usr/lib/jvm/java-%s-openjdk-amd64/bin/%s' % [version, bin],
               )
               is_expected.to contain_alternatives(bin)
             end
@@ -109,7 +109,7 @@ describe 'java' do
           ['java', 'jar', 'javac'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                '/opt/oracle-java8/jdk/bin/%s' % [bin]
+                '/opt/oracle-java8/jdk/bin/%s' % [bin],
               )
             end
             it { is_expected.to contain_alternatives(bin) }
