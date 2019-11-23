@@ -1,4 +1,9 @@
 ---
+
+[![Build Status](https://api.travis-ci.com/fe80/puppet-java.svg?branch=master)](https://travis-ci.org/fe80/puppet-java)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/fe80/java.svg)](https://forge.puppetlabs.com/feuo/java)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/fe80/java.svg)](https://forge.puppetlabs.com/fe80/java)
+
 # Java module for Puppet
 
 This module was write by fe80 <puppetlabs@p0l.io>

@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe 'java' do
   on_supported_os(facterversion: '3.6').each do |os, facts|
-
     context "with default for all parameters on #{os}" do
       let(:pre_condition) do
         "Exec { path => '/usr/bin:/usr/sbin/:/bin:/sbin:/usr/local/sbin:/usr/local/bin' }"
@@ -42,10 +41,10 @@ describe 'java' do
           it { is_expected.to contain_package('java-11-openjdk') }
 
           # Alternatives
-          [ 'java', 'jar', 'javac' ].each do |bin|
+          ['java', 'jar', 'javac'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                "/usr/lib/jvm/jre-11-openjdk/bin/#{bin}"
+                '/usr/lib/jvm/jre-11-openjdk/bin/' + bin
               )
             end
             it { is_expected.to contain_alternatives(bin) }
@@ -72,26 +71,28 @@ describe 'java' do
           it { is_expected.to contain_package("openjdk-#{version}-jdk") }
 
           # Alternatives
-          [ 'java', 'jar', 'javac', 'jarsigner', 'javap', 'javadoc' ].each do |bin|
+          ['java', 'jar', 'javac', 'jarsigner', 'javap', 'javadoc'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                "/usr/lib/jvm/java-#{version}-openjdk-amd64/bin/#{bin}"
+                "/usr/lib/jvm/java-#{version}-openjdk-amd64/bin/" + bin
               )
+              is_expected.to contain_alternatives(bin)
             end
-            it { is_expected.to contain_alternatives(bin) }
           end
         end
       end
 
       context 'with oracle provider' do
-        let(:params) {{
-          provider: 'oracle',
-          versions: [ 8 ],
-          mirror: 'https://mymirror.com/oracle/apt'
-        }}
+        let(:params) do
+          {
+            'provider' => 'oracle',
+            'versions' => [8],
+            'mirror' => 'https://mymirror.com/oracle/apt',
+          }
+        end
 
         if facts[:osfamily] == 'RedHat'
-          it { should compile.and_raise_error(/Unsupported/) }
+          it { is_expected.to compile.and_raise_error(%r{Unsupported}) }
         else
           # Classes
           it { is_expected.to contain_class('java::oracle') }
@@ -107,10 +108,10 @@ describe 'java' do
           it { is_expected.to contain_package('oracle-java8-jdk') }
 
           # Alternatives
-          [ 'java', 'jar', 'javac' ].each do |bin|
+          ['java', 'jar', 'javac'].each do |bin|
             it do
               is_expected.to contain_alternative_entry(
-                "/opt/oracle-java8/jdk/bin/#{bin}"
+                '/opt/oracle-java8/jdk/bin/' + bin
               )
             end
             it { is_expected.to contain_alternatives(bin) }
