@@ -30,40 +30,33 @@
 # @param collectd
 #   Include the GenericJMX collectd class
 class java (
-  Enum['present', 'absent'] $ensure              = 'present',
-  Enum['openjdk', 'oracle'] $provider            = 'openjdk',
-  Optional[Tuple[Integer, 1, default]] $versions = undef,
-  Optional[Integer] $default_version             = undef,
-  Optional[String] $mirror                       = undef
+  Enum['present', 'absent'] $ensure                   = 'present',
+  Enum['openjdk', 'oracle', 'adoptopenjdk'] $provider = 'openjdk',
+  Optional[Tuple[Integer, 1, default]] $versions      = undef,
+  Optional[Integer] $default_version                  = undef,
+  Optional[String] $mirror                            = undef
 ) inherits java::params {
 
   if $provider == 'openjdk' {
 
     include java::openjdk::params
-    $_versions = $versions ? {
-      undef   => $java::openjdk::params::versions,
-      default => $versions,
-    }
+    $_versions = pick($versions, [$java::openjdk::params::versions[0]])
 
-    $_default_version = $default_version ? {
-      undef   => $_versions[0],
-      default => $default_version,
-    }
-
-    include java::openjdk
   } elsif $provider == 'oracle' {
 
-    $_versions = $versions ? {
-      undef   => [ 8 ],
-      default => $versions,
-    }
+    $_versions = pick($versions, [ 8 ])
 
-    $_default_version = $default_version ? {
-      undef   => $_versions[0],
-      default => $default_version,
-    }
-    include java::oracle
+  } elsif $provider == 'adoptopenjdk' {
+    $_versions = pick($versions, [ 13 ])
   }
 
+  $_default_version = $default_version ? {
+    undef   => $_versions[0],
+    default => $default_version,
+  }
+
+  include "java::${provider}"
+
   include java::profile
+  include java::default
 }

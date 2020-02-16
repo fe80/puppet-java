@@ -1,0 +1,14 @@
+# Managed by Puppet
+
+<%- if scope['s_java::provider'] == 'openjdk' -%>
+<%-   if @osfamily == 'Debian' -%>
+JAVA_HOME="/usr/lib/jvm/java-<%= @version -%>-openjdk-amd64"
+<%-   else -%>
+<%-     dir = @version <= 8 ? "jre-1.#{@version}.0" : "jre-#{@version}-openjdk" -%>
+JAVA_HOME="/usr/lib/jvm/<%= dir -%>"
+<%-   end -%>
+<%- elsif  scope['s_java::provider'] == 'oracle' -%>
+JAVAHHOME="/opt/oracle-java<%= @version -%>/jdk"
+<%- else -%>
+JAVAHHOME="/usr/lib/jvm/adoptopenjdk-<%= @version -%>-openj9"
+<%- end -%>
