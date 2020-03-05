@@ -1,6 +1,6 @@
 {
   "name": "fe80-java",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "fe80",
   "summary": "Puppet Java jdk management module",
   "license": "Apache-2.0",
