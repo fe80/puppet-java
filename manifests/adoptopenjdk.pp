@@ -9,6 +9,6 @@ class java::adoptopenjdk {
   include java::adoptopenjdk::install
   include java::adoptopenjdk::alternatives
 
-  Class[Java::Adoptopenjdk::Repo]
+  Class['java::adoptopenjdk::repo']
   -> Package <|tag == 'adoptopenjdk-jdk'|>
 }
