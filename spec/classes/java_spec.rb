@@ -52,7 +52,7 @@ describe 'java' do
           end
 
           # File
-          it {is_expected.to contain_file('/etc/default/java-11')}
+          it { is_expected.to contain_file('/etc/default/java-11') }
           it do
             is_expected.to contain_file('/etc/default/java').with(
               ensure: 'link',
@@ -89,7 +89,7 @@ describe 'java' do
           end
 
           # File
-          it {is_expected.to contain_file('/etc/default/java-' + version.to_s)}
+          it { is_expected.to contain_file('/etc/default/java-' + version.to_s) }
           it do
             is_expected.to contain_file('/etc/default/java').with(
               ensure: 'link',
@@ -136,7 +136,7 @@ describe 'java' do
           end
 
           # File
-          it {is_expected.to contain_file('/etc/default/java-8')}
+          it { is_expected.to contain_file('/etc/default/java-8') }
           it do
             is_expected.to contain_file('/etc/default/java').with(
               ensure: 'link',
@@ -184,7 +184,7 @@ describe 'java' do
         end
 
         # File
-        it {is_expected.to contain_file('/etc/default/java-13')}
+        it { is_expected.to contain_file('/etc/default/java-13') }
         it do
           is_expected.to contain_file('/etc/default/java').with(
             ensure: 'link',
