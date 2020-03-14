@@ -47,9 +47,21 @@ def ensure_module_defined(module_name)
   end
 end
 
-RSpec.configure do |c|
-  c.after(:suite) do
-    RSpec::Puppet::Coverage.report!
+# 'spec_overrides' from sync.yml will appear below this line
+if Dir.exist?(File.expand_path('../../lib', __FILE__))
+  require 'coveralls'
+  require 'simplecov'
+  require 'simplecov-console'
+  SimpleCov.formatters = [
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::Console,
+    Coveralls::SimpleCov::Formatter
+  ]
+  SimpleCov.start do
+    track_files 'lib/**/*.rb'
+    add_filter '/spec'
+    add_filter '/vendor'
+    add_filter '/.vendor'
+    add_filter Bundler.configured_bundle_path.path
   end
 end
-# 'spec_overrides' from sync.yml will appear below this line
