@@ -1,7 +1,6 @@
 ---
 
 [![Build Status](https://api.travis-ci.com/fe80/puppet-java.svg?branch=master)](https://travis-ci.com/fe80/puppet-java)
-[![Coverage Status](https://coveralls.io/repos/github/fe80/puppet-java/badge.svg?branch=master)](https://coveralls.io/github/fe80/puppet-java?branch=master)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/fe80/java.svg)](https://forge.puppetlabs.com/fe80/java)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/fe80/java.svg)](https://forge.puppetlabs.com/fe80/java)
 
@@ -22,6 +21,11 @@ Install lasted version of openjdk on your distribution
 ```puppet
 include java
 ```
+
+### Supported provider
+* openjdk
+* adopteopenjdk
+* oracle (WIP)
 
 ### Define versions
 
@@ -55,6 +59,5 @@ Need contribution for RedHat support.
 * Centos 7
 
 ## Todo
-* Runner for spec
 * Runner for documentation
 * Support Oracle jdk support for RedHat
