@@ -4,7 +4,7 @@ require 'rspec-puppet-facts'
 require 'spec_helper_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_local.rb'))
 
 include RspecPuppetFacts
-
+require 'coveralls'
 Coveralls.wear!
 
 default_facts = {
@@ -47,5 +47,3 @@ def ensure_module_defined(module_name)
 end
 
 # 'spec_overrides' from sync.yml will appear below this line
-require 'coveralls'
-Coveralls.wear!
