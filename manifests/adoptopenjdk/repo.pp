@@ -25,6 +25,19 @@ class java::adoptopenjdk::repo {
         target   => '/etc/yum.repo.d/adoptopenjdk.repo',
       }
     }
+    'Debian': {
+      ensure_packages('software-properties-common')
+      apt::source { 'adoptopenjdk':
+        ensure   => $java::ensure,
+        location => 'https://adoptopenjdk.jfrog.io/adoptopenjdk/deb',
+        repos    => 'main',
+        release  => $facts['lsbdistcodename'],
+        key      => {
+          source => 'https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public',
+          id     => '8ED17AF5D7E675EB3EE3BCE98AC3B29174885C03',
+        }
+      }
+    }
     default : {}
   }
 }
