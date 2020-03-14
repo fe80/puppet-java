@@ -181,7 +181,7 @@ describe 'java' do
               key: {
                 'source' => 'https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public',
                 'id' => '8ED17AF5D7E675EB3EE3BCE98AC3B29174885C03',
-              }
+              },
             )
           end
         end
