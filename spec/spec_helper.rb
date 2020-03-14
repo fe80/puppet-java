@@ -1,6 +1,5 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-facts'
-require 'coveralls'
 
 require 'spec_helper_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_local.rb'))
 
@@ -48,20 +47,5 @@ def ensure_module_defined(module_name)
 end
 
 # 'spec_overrides' from sync.yml will appear below this line
-if Dir.exist?(File.expand_path('../../lib', __FILE__))
-  require 'coveralls'
-  require 'simplecov'
-  require 'simplecov-console'
-  SimpleCov.formatters = [
-    SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::Console,
-    Coveralls::SimpleCov::Formatter,
-  ]
-  SimpleCov.start do
-    track_files 'lib/**/*.rb'
-    add_filter '/spec'
-    add_filter '/vendor'
-    add_filter '/.vendor'
-    add_filter Bundler.configured_bundle_path.path
-  end
-end
+require 'coveralls'
+Coveralls.wear!
