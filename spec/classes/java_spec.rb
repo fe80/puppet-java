@@ -175,10 +175,10 @@ describe 'java' do
           it { is_expected.to contain_package('software-properties-common') }
           it do
             is_expected.to contain_apt__source('adoptopenjdk').with(
-              :location => 'https://adoptopenjdk.jfrog.io/adoptopenjdk/deb',
-              :release => facts[:lsbdistcodename],
-              :repos => 'main',
-              :key => {
+              location: 'https://adoptopenjdk.jfrog.io/adoptopenjdk/deb',
+              release: facts[:lsbdistcodename],
+              repos: 'main',
+              key: {
                 'source' => 'https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public',
                 'id' => '8ED17AF5D7E675EB3EE3BCE98AC3B29174885C03',
               }
