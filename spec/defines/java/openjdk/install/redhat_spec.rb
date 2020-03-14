@@ -7,12 +7,12 @@ describe 'java::openjdk::install::redhat' do
       context "With #{status} openjdk 8 on #{os}" do
         let(:facts) { facts }
         let(:title) { 'openjdk-8' }
-        let(:params) {
+        let(:params) do
           {
             version: 8,
             ensure: status,
           }
-        }
+        end
 
         it { is_expected.to compile }
 
@@ -28,17 +28,17 @@ describe 'java::openjdk::install::redhat' do
     context "With openjdk 11 on #{os}" do
       let(:facts) { facts }
       let(:title) { 'openjdk-8' }
-      let(:params) {
+      let(:params) do
         {
           version: 11,
           ensure: 'present',
         }
-      }
+      end
 
       if facts[:operatingsystemmajrelease].to_i < 7
-        it { is_expected.to compile.and_raise_error(/Unsupported version/) }
+        it { is_expected.to compile.and_raise_error(%r{Unsupported version}) }
       else
-         it { is_expected.to compile }
+        it { is_expected.to compile }
       end
 
       it do

@@ -7,15 +7,15 @@ describe 'java::openjdk::install::debian' do
       context "With #{status} openjdk 8 on #{os}" do
         let(:facts) { facts }
         let(:title) { 'openjdk-8' }
-        let(:params) {
+        let(:params) do
           {
             version: 8,
             ensure: status,
           }
-        }
+        end
 
-        if facts[:operatingsystemmajrelease].to_s =~ /^(8|14.04)/
-          it { is_expected.to compile.and_raise_error(/Unsupported version/) }
+        if facts[:operatingsystemmajrelease].to_s =~ %r{^(8|14.04)$}
+          it { is_expected.to compile.and_raise_error(%r{Unsupported version}) }
           next
         else
           it { is_expected.to compile }
